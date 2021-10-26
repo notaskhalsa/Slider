@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Slider</title>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1633871989620-f6c187c5ebf1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" class="slider-img" alt="">
+            <h1>1</h1>
+        </div> 
+        <div class="slide">
+            <h1>2</h1>
+        </div>  
+        <div class="slide">
+            <h1>3</h1>
+        </div>  
+        <div class="slide">
+            <div>
+            <img src="./images/user3.jpg" class="person-img" alt="">
+            <h3>Susan Doe</h3>
+            <h1>4</h1>
+            </div>        
+        </div>
+    </div>
+    <div class="btn-container">
+        <button type="button" class="prevBtn">prev</button>
+        <button type="button" class="nextBtn">next</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const nextBtn = document.querySelector(".nextBtn");
+        const prevBtn = document.querySelector(".prevBtn");
+
+        let counter = 0;
+
+        nextBtn.addEventListener('click', function(){
+            counter++;
+            carousel();
+        });
+        prevBtn.addEventListener('click', function(){
+            counter--;
+            carousel();
+        });
+
+        function carousel(){
+
+            if(counter === slides.length){
+                counter = 0;
+            }
+            if(counter < 0){
+                counter = slides.length -1;
+            }
+
+            slides.forEach(slide => 
+                {slide.style.transform = `translateY(-${counter*100}%)`;}
+            )
+        }
+
+    </script>
+</body>
+</html>
